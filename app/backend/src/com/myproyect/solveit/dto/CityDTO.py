@@ -1,24 +1,30 @@
 from asyncio.windows_events import NULL
+from pydoc import describe
 import this
 from tokenize import String
+from uuid import UUID
 
 class CityDTO:
-    id = int
+    id = UUID
     description = String
 
     def setId(self,id):
         self.id = id
 
-    def getId():
-        return NULL
+    def getId(self):
+        return self.id
     
-    def getDescription():
-        return NULL
+    def getDescription(self):
+        return self.description
+
     def setDescription(self,description):
         self.description = description
     
-    def __init__(self,id,description) -> None:
-        pass
+    def build(self,id,description):
+        self.setId(id)
+        self.setDescription(description)
 
     def __init__(self)-> None:
-        pass
+        self.setId(0)
+        self.setDescription("")
+

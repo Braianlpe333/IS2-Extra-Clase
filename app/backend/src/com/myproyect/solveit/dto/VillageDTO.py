@@ -1,11 +1,25 @@
+import this
+from uuid import UUID
 from app.backend.src.com.myproyect.solveit.dto.CityDTO import CityDTO
 
 
 class VillageDTO:
-    id=int
+    id=UUID
     city = CityDTO
 
-    def __init__(self,id,city) -> None:
+    def setId(self,id):
         self.id = id
-        self.city = city
+
+    def getId():
+        return this.id
+
+    def setCity(self,city):
+        self.city =city
+    
+    def getCity():
+        return this.city
+
+    def __init__(self,id,city) -> None:
+        self.setId(id)
+        self.setCity(city)
 
