@@ -1,6 +1,4 @@
 from asyncio.windows_events import NULL
-from pydoc import describe
-import this
 from tokenize import String
 from uuid import UUID
 
@@ -24,6 +22,10 @@ class CityDTO:
         self.setId(id)
         self.setDescription(description)
 
+    @classmethod
+    def new(cls, id):
+        return CityDTO
+    
     def __init__(self)-> None:
         self.setId(0)
         self.setDescription("")
