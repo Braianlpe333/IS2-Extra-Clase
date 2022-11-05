@@ -1,15 +1,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router,Route} from 'react-router-dom'
-function App() {
-  return (
-    
-    <Router>
-      <Navigation>
-        <Route path="/" exact component={Login}/>
+import LoginButton from './com/myproject/solveit/component/Button/Login/LoginButton';
 
-      </Navigation>
-    </Router>
+function App() {
+  
+
+  return (
+    <div className='App'>
+      <h1>Application</h1>
+      <LoginButton/>
+    </div>
+  
   );
 }
 

@@ -3,8 +3,8 @@ import string
 from tokenize import String
 from uuid import UUID
 
-from app.backend.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTyopeDomain, IdTypeDomain
-from app.backend.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
+from app.PersonService.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTyopeDomain, IdTypeDomain
+from app.PersonService.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
 
 class PersonaDomain:
@@ -49,7 +49,7 @@ class PersonaDomain:
         return self.idType
     def getNumbe(self):
         return self.number
-    def 
+    
 
 
 
