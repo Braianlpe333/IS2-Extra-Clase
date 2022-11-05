@@ -3,11 +3,11 @@ import string
 from tokenize import String
 from uuid import UUID
 
-from app.PersonService.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTyopeDomain, IdTypeDomain
-from app.PersonService.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTypeDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
 
-class PersonaDomain:
+class PersonDomain:
     id= UUID
     name= string
     lastName= string
@@ -37,6 +37,8 @@ class PersonaDomain:
         self.zone = zone
     def setPassword(self, password):
         self.password = password
+    def setIdNumber(self, idNumber):
+        self.idNumber = idNumber
     
     #GETTERS
     def getId(self):
@@ -47,8 +49,16 @@ class PersonaDomain:
         return self.lastName
     def getIdType(self):
         return self.idType
-    def getNumbe(self):
+    def getNumber(self):
         return self.number
+    def  getMail(self):
+        return self.mail
+    def getDescription(self):
+        return self.description
+    def getZone(self):
+        return self.zone
+    def setPassword(self):
+        return self.password
     
 
 
@@ -56,10 +66,15 @@ class PersonaDomain:
 
 
     def __init__(self, id, name, lastName, idNumber, idType, number, mail, description, zone, password ):
-        self.id= id
-        self.name=name
-        self.lastName=lastName
-        self.idNumber=idNumber
-        self.idType=idType
+        self.setId(id)
+        self.setName(name)
+        self.setLastName(lastName)
+        self.setIdNumber(idNumber)
+        self.setIdType(idType)
+        self.setNumber(number)
+        self.setZone(zone)
+        self.setMail(mail)
+        self.setPassword(password)
+        self.setDescription(description)
 
 
