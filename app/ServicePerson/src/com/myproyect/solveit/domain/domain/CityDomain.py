@@ -10,15 +10,18 @@ class CityDomain:
     def setId(self,id):
         self.id = id
 
-    def getId():
-        return NULL
+    def getId(self):
+        return self.id
     
-    def getDescription():
-        return NULL
+    def getDescription(self):
+        return  self.description
     
     def setDescription(self,description):
         self.description = description
+
+    def __init__(self, id, description):
+        self.setId(id)
+        self.setDescription(description)
         
-    def CityDomainCreate(self, id, description):
-        print("hola")
+    def create( id, description):
         return CityDomain(id, description)

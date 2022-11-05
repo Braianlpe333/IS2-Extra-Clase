@@ -77,4 +77,7 @@ class PersonDomain:
         self.setPassword(password)
         self.setDescription(description)
 
+    
+    def create( id, name, lastName, idNumber,  idType, number, zone, mail, password, description):
+        return PersonDomain(id, name, lastName, idNumber, idType, number, zone, mail, password, description)
 

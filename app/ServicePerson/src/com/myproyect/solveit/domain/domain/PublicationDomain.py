@@ -64,5 +64,8 @@ class PublicationDomain:
         self.setPublicationType(publicationType)
         self.setZone(zone)
         self.setReport(report)
+    
 
+    def create(id, tittle, description, publisher, number, publicationType, zone, report, phoneNumber):
+        return PublicationDomain(id, tittle, description, publisher, number, publicationType, zone, report, phoneNumber)
     
