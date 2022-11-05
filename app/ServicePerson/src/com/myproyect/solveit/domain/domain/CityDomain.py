@@ -19,5 +19,6 @@ class CityDomain:
     def setDescription(self,description):
         self.description = description
         
-    def CityDomain(self, id, description) -> None:
+    def CityDomainCreate(self, id, description):
         print("hola")
+        return CityDomain(id, description)

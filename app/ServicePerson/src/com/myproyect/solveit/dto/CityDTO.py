@@ -22,9 +22,6 @@ class CityDTO:
         self.setId(id)
         self.setDescription(description)
 
-    @classmethod
-    def new(cls, id):
-        return CityDTO
     
     def __init__(self)-> None:
         self.setId(0)

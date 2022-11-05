@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 from distutils.command.build import build
 from tokenize import String
 from uuid import UUID
-
+from CityDomain import *
 
 class CityDomainBuilder:
     id = UUID
@@ -20,5 +20,5 @@ class CityDomainBuilder:
     def setDescription(self,description):
         self.description = description
         
-    """def CityDomain build():
-        return CityDomainBuilder.c"""
+    def CityDomain(self, id, description):
+        return CityDomain.builder(id, description)
