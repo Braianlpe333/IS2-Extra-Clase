@@ -1,4 +1,6 @@
 messageState=(
-    ('Send'),
-    ('Received')
+    ('SEND','SEND'),
+    ('RECIVED','RECIVED'),
+    ('READ','READ'),
+    ('SENDING...','SENDING...')
 )
