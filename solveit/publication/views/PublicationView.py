@@ -30,7 +30,7 @@ class PublicationView(View):
         jd = json.loads(request.body)
         try:
             Publication.objects.create(title=jd['title'],description=jd['description'],phone=jd['phone'],
-            publication_type_id_id=jd['publication_type_id'],report_id_id=jd['report_id'],user_id_id=jd['user_id'],zone_id_id=jd['zone_id'])
+            publication_type_id_id=jd['publication_type_id'],user_id_id=jd['user_id'],zone_id_id=jd['zone_id'])
             dates = {'message':'Success'}
         except ValueError:
                 dates ={'message':ValueError}
@@ -47,10 +47,9 @@ class PublicationView(View):
                 publications.title=jd['title']
                 publications.description=jd['description']
                 publications.phone=jd['phone']
-                publications.publication_type_id=jd['publication_type_id_id']
-                publications.report_id=jd['report_id_id']
-                publications.user_id=jd['user_id_id']
-                publications.zone_id=jd['zone_id_id']
+                publications.publication_type_id_id=jd['publication_type_id']
+                publications.user_id_id=jd['user_id']
+                publications.zone_id_id=jd['zone_id']
                 publications.save()
                 dates ={'message':'Success'}
             except ValueError:

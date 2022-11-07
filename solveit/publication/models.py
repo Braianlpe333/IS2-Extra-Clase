@@ -13,7 +13,7 @@ class Zone(models.Model):
     corregimiento_id = models.ForeignKey(Corregimiento, verbose_name = 'Corregimiento', on_delete = models.CASCADE, null = False)
 
 class Id_Type(models.Model):
-    description = models.CharField(max_length = 10, choices = id_type)
+    description = models.CharField(max_length = 30, choices = id_type)
     
 class User(models.Model):
     zone_id = models.ForeignKey(Zone, verbose_name = 'Zone', on_delete = models.CASCADE, null = False)
@@ -27,10 +27,10 @@ class User(models.Model):
     password = models.CharField(max_length = 50,verbose_name = 'Password', null = False)
     
 class RequestState(models.Model):
-    description = models.CharField(max_length = 10, choices = request_state)
+    description = models.CharField(max_length = 30, choices = request_state)
     
 class MessageState(models.Model):
-    description = models.CharField(max_length = 10, choices = messageState)
+    description = models.CharField(max_length = 30, choices = messageState)
     
 class Message(models.Model):
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
@@ -38,15 +38,10 @@ class Message(models.Model):
     messagestate_id = models.ForeignKey(MessageState, verbose_name = 'MessageState_Id', on_delete = models.CASCADE, null = False)
 
 class Publication_Type(models.Model):
-    description = models.CharField(max_length = 10, choices = publication_type)
-    
-class Report(models.Model):
-    description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
-    user_id = models.ForeignKey(User, verbose_name = 'User_Id', on_delete = models.CASCADE, null = False)
+    description = models.CharField(max_length = 30, choices = publication_type)
     
 class Publication(models.Model):
     user_id = models.ForeignKey(User, verbose_name = 'User_Id', on_delete = models.CASCADE, null = False)
-    report_id = models.ForeignKey(Report, verbose_name= 'Report_Id', on_delete = models.CASCADE, null = False)
     publication_type_id = models.ForeignKey(Publication_Type, verbose_name = 'Publication_Type_Id', on_delete = models.CASCADE, null = False)
     title = models.CharField(max_length = 50, verbose_name = 'Title', null = False)
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
@@ -69,4 +64,10 @@ class Notification(models.Model):
     user_id = models.ForeignKey(User, verbose_name = 'User_id', on_delete = models.CASCADE, null = False)
     message_id = models.ForeignKey(Message, verbose_name = 'Message_Id', on_delete = models.CASCADE, null = False)
     request_id = models.ForeignKey(Request, verbose_name = 'Request_Id', on_delete = models.CASCADE, null = False)
+    publication_id = models.ForeignKey(Publication, verbose_name = 'Publication_Id', on_delete = models.CASCADE, null = False)
+
+
+class Report(models.Model):
+    description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
+    user_id = models.ForeignKey(User, verbose_name = 'User_Id', on_delete = models.CASCADE, null = False)
     publication_id = models.ForeignKey(Publication, verbose_name = 'Publication_Id', on_delete = models.CASCADE, null = False)
