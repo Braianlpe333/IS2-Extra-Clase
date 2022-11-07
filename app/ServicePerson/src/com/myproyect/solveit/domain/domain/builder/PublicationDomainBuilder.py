@@ -1,10 +1,11 @@
 from uuid import UUID
 from tokenize import String
-
-from app.ServicePublication.src.com.myproyect.solveit.domain.domain.PersonDomain import PersonDomain
-from app.ServicePublication.src.com.myproyect.solveit.domain.domain.PublicationTypeDomain import PublicationTypeDomain
-from app.ServicePublication.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
-class PublicationDomain:
+import uuid
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PersonDomain import PersonDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PublicationDomain import PublicationDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PublicationTypeDomain import PublicationTypeDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
+class PublicationDomainBuilder:
     id = UUID
     tittle = String
     description =String
@@ -54,8 +55,8 @@ class PublicationDomain:
     def getReport(self):
         return self.report
 
-    def __init__(self, id, tittle, description, publisher, number, publicationType, zone, report, phoneNumber):
-        self.setId(id)
+    def __init__(self, tittle, description, publisher, number, publicationType, zone, report, phoneNumber):
+        self.setId(uuid.uuid1)
         self.setTittle(tittle)
         self.setDescription(description)
         self.setPublisher(publisher)
@@ -64,8 +65,6 @@ class PublicationDomain:
         self.setPublicationType(publicationType)
         self.setZone(zone)
         self.setReport(report)
-    
-
-    def create(id, tittle, description, publisher, number, publicationType, zone, report, phoneNumber):
-        return PublicationDomain(id, tittle, description, publisher, number, publicationType, zone, report, phoneNumber)
+    def build(self):
+        return PublicationDomain.create(self.id, self.tittle, self.description, self.publisher, self.number, self.publicationType, self.zone, self.report, self.phoneNumber)
     

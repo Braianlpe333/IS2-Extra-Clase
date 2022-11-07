@@ -2,12 +2,13 @@ from selectors import SelectorKey
 import string
 from tokenize import String
 from uuid import UUID
+import uuid
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTypeDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PersonDomain import PersonDomain
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
-from app.ServicePublication.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTypeDomain
-from app.ServicePublication.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
-
-class PersonDomain:
+class PersonDomainBuilder:
     id= UUID
     name= string
     lastName= string
@@ -65,8 +66,8 @@ class PersonDomain:
 
 
 
-    def __init__(self, id, name, lastName, idNumber, idType, number, mail, description, zone, password ):
-        self.setId(id)
+    def __init__(self, name, lastName, idNumber, idType, number, mail, description, zone, password ):
+        self.setId(uuid.uuid1)
         self.setName(name)
         self.setLastName(lastName)
         self.setIdNumber(idNumber)
@@ -76,8 +77,10 @@ class PersonDomain:
         self.setMail(mail)
         self.setPassword(password)
         self.setDescription(description)
+    
+    def build(self):
+        return PersonDomain.create(id, self.name, self.lastName, self.idNumber, self.idType, self.number, self.zone, self.mail, self.password, self.description)
+    
+
 
     
-    def create( id, name, lastName, idNumber,  idType, number, zone, mail, password, description):
-        return PersonDomain(id, name, lastName, idNumber, idType, number, zone, mail, password, description)
-

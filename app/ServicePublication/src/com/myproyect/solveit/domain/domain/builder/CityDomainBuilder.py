@@ -1,24 +1,30 @@
 from asyncio.windows_events import NULL
-from distutils.command.build import build
 from tokenize import String
 from uuid import UUID
-from CityDomain import *
+import uuid
+
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.CityDomain import CityDomain
+
 
 class CityDomainBuilder:
     id = UUID
     description = String
-
+    
     def setId(self,id):
         self.id = id
 
-    def getId():
-        return NULL
+    def getId(self):
+        return self.id
     
-    def getDescription():
-        return NULL
+    def getDescription(self):
+        return  self.description
     
     def setDescription(self,description):
         self.description = description
-        
-    def CityDomain(self, id, description):
-        return CityDomain.builder(id, description)
+
+    def __init__(self, id, description):
+        self.setId(uuid.uuid1)
+        self.setDescription(description)
+    
+    def build(self):
+        return CityDomain.create(self.id, self.description)

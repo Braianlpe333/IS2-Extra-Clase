@@ -1,17 +1,17 @@
-import string
+from tokenize import String
 from uuid import UUID
 
 from app.ServicePerson.src.com.myproyect.solveit.domain.domain.CorregimientoDomian import CorregimientoDomian
+from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
 
-class ZoneDomain:
-
-    id = UUID
-    description = string
+class ZoneDomainBuilder:
+    id= UUID
+    description =String
     corregimiento = CorregimientoDomian()
-    
+
+
     #GETTERS
-    
     def getId(self):
         return self.id
     def getDescription(self):
@@ -20,18 +20,17 @@ class ZoneDomain:
         return self.corregimiento
     
     #SETTERS
-
     def setId(self, id):
         self.id = id
-    def setCorregimiento(self, corregimiento):
-        self.corregimiento = corregimiento
     def setDescription(self, description):
         self.description = description
+    def setCorregimiento(self, corregimiento):
+        self.corregimiento = corregimiento
     
-    def __init__(self, id, corregimiento, description):
+    def __init__(self, id, description, corregimiento):
         self.setId(id)
         self.setDescription(description)
         self.setCorregimiento(corregimiento)
     
-    def create(id, corregimeinto, description):
-        return CorregimientoDomian(id, corregimeinto, description)
+    def  build(self):
+        return ZoneDomain.create(self.id, self.corregimiento, self.description)
