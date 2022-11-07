@@ -1,22 +1,26 @@
 from django.db import models
 
 class City(models.Model):
-    description = models.CharField(max_length = 200 )
-    
-    """
-    , primary_Key=True, verbose_name = 'Code'
-    max_lenght = 200,verbose_name = 'Decription'
-    class Meta:
-        verbose_name = 'City'
-        verbose_name_plural = 'Cityes'
-        db_table = 'city'
-        ordering = ['code', '-description']
+    description = models.CharField(max_length = 50, null = False)
     
 class Corregimiento(models.Model):
-    code = models.AutoField(default=0, primary_Key=True, verbose_name = 'Code')
-    description = models.CharField(max_lenght = 200, verbose_name = 'Description')
-    city_id = models.ForeignKey(City ,verbose_name = 'City', on_delete = models.CASCADE)
+    description = models.CharField(max_length = 50, verbose_name = 'Description', null = False)
+    city_id = models.ForeignKey(City ,verbose_name = 'City', on_delete = models.CASCADE, null = False)
     
 class Zone(models.Model):
-    code = models.AutoField(default=0, primary_Key=True)
-    description = models.CharField(max_lenght = 200)"""
+    description = models.CharField(max_lenght = 50, null = False)
+    corregimiento_id = models.ForeignKey(Corregimiento, verbose_name = 'Corregimiento', null = False)
+
+class Id_Type(models.Model):
+    description = models.CharField(max_lenght = 50, null = False)
+    
+class User(models.Model):
+    zone_id = models.ForeignKey(Zone, verbose_name = 'Zone', null = False)
+    idType_id = models.ForeignKey(Id_Type, verbose_name = 'Id_Type', null = False)
+    name = models.CharField(max_lenght = 50, verbose_name = 'Name', null = False)
+    lastname = models.CharField(max_lenght = 50, verbose_name = 'Lastname', null = False)
+    description = models.CharField(max_lenght = 50, verbose_name = 'Description', null = False)
+    idnumber = models.PositiveIntegerField(verbose_name = 'Id_Number', null = False)
+    phone = models.PositiveIntegerField(verbose_name = 'Phone', default = 0)
+    mail = models.EmailField(verbose_name = 'Mail', null = False)
+    password = models.CharField(verbose_name = 'Password', null = False)
