@@ -3,8 +3,8 @@ import string
 from tokenize import String
 from uuid import UUID
 
-from app.ServicePerson.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTypeDomain
-from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
+from app.ServicePublication.src.com.myproyect.solveit.domain.domain.IdTypeDomain import IdTypeDomain
+from app.ServicePublication.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 
 
 class PersonDomain:

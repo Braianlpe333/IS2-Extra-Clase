@@ -1,9 +1,9 @@
 from uuid import UUID
 from tokenize import String
 
-from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PersonDomain import PersonDomain
-from app.ServicePerson.src.com.myproyect.solveit.domain.domain.PublicationTypeDomain import PublicationTypeDomain
-from app.ServicePerson.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
+from app.ServicePublication.src.com.myproyect.solveit.domain.domain.PersonDomain import PersonDomain
+from app.ServicePublication.src.com.myproyect.solveit.domain.domain.PublicationTypeDomain import PublicationTypeDomain
+from app.ServicePublication.src.com.myproyect.solveit.domain.domain.ZoneDomain import ZoneDomain
 class PublicationDomain:
     id = UUID
     tittle = String

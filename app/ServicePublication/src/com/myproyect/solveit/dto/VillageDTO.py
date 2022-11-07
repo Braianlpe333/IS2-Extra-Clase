@@ -1,6 +1,6 @@
 import this
 from uuid import UUID
-from app.ServicePerson.src.com.myproyect.solveit.dto.CityDTO import CityDTO
+from app.ServicePublication.src.com.myproyect.solveit.dto.CityDTO import CityDTO
 
 
 class VillageDTO:
