@@ -1,4 +1,5 @@
 from django.db import models
+from .choices import *
 
 class City(models.Model):
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
@@ -31,7 +32,7 @@ class RequestState(models.Model):
     description = models.CharField(max_lenght = 50, null = False, verbose_name = 'Description')
     
 class MessageState(models.Model):
-    description = models.CharField(max_lenght = 50, null = False, verbose_name = 'Description')
+    description = models.CharField(max_lenght = 10, choices = messageState)
     
 class Message(models.Model):
     description = models.CharField(max_lenght = 50, null = False, verbose_name = 'Description')
