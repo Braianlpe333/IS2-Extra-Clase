@@ -20,4 +20,5 @@ class Zone(models.model):
     code = models.AutoField(default=0, primary_Key=True)
     description = models.CharField(max_lenght = 200)
     
+    
 # Create your models here.

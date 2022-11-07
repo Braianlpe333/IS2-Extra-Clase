@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'SolveIT_Database',
         'USER': 'postgres',
-        'PASSWORD': '12345b',
+        'PASSWORD': '1234567890',
         'HOST' : '127.0.0.1',
         'DATABASE_PORT': '5432',
     }

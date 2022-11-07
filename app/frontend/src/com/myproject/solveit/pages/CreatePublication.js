@@ -41,8 +41,7 @@ const CreatePublication = () => {
     if (!values.zone ) {
       errors.zone = "Por favor seleccione una zona";
     } 
-    
-    
+
 
     return errors;
   };
@@ -61,11 +60,24 @@ const CreatePublication = () => {
       .post("http://localhost:8080/create", formData)
       .then((response) => {
         console.log(response.data);
+        
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  const getZones = () =>{
+    axios.get()
+    .then((response)=>{
+      console.log(response);
+      this.setStates({zone: response.data})
+      return response.data
+    }).catch((error)=>{
+      console.log(error);
+    });
+  };
+
   return (
     <Container>
       <div>
@@ -149,10 +161,15 @@ const CreatePublication = () => {
             <div className="zone">
               <p htmlFor="zone"> Zona </p>
               <Field name="zone" as="select">
-                <option value=""></option>
-                <option value="Venta">Venta</option>
-                <option value="Intercambio">Intercambio</option>
-                <option value="Venta o intercambio">Venta o intercambio</option>
+                {
+                options.map(element =>{
+                    return(
+                        <option key={element.id} value= {element.value} >
+                            {element.value}
+                        </option>
+                    )
+                })
+            }
               </Field>
               <ErrorMessage
                 name="zone"
