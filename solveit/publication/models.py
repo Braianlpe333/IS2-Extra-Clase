@@ -9,12 +9,11 @@ class Corregimiento(models.Model):
     city_id = models.ForeignKey(City ,verbose_name = 'City', on_delete = models.CASCADE, null = False)
     
 class Zone(models.Model):
-
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
     corregimiento_id = models.ForeignKey(Corregimiento, verbose_name = 'Corregimiento', on_delete = models.CASCADE, null = False)
 
 class Id_Type(models.Model):
-    description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
+    description = models.CharField(max_length = 10, choices = id_type)
     
 class User(models.Model):
     zone_id = models.ForeignKey(Zone, verbose_name = 'Zone', on_delete = models.CASCADE, null = False)
@@ -28,10 +27,9 @@ class User(models.Model):
     password = models.CharField(max_length = 50,verbose_name = 'Password', null = False)
     
 class RequestState(models.Model):
-    description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
+    description = models.CharField(max_length = 10, choices = request_state)
     
 class MessageState(models.Model):
-
     description = models.CharField(max_length = 10, choices = messageState)
     
 class Message(models.Model):
@@ -40,7 +38,7 @@ class Message(models.Model):
     messagestate_id = models.ForeignKey(MessageState, verbose_name = 'MessageState_Id', on_delete = models.CASCADE, null = False)
 
 class Publication_Type(models.Model):
-    description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
+    description = models.CharField(max_length = 10, choices = publication_type)
     
 class Report(models.Model):
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
