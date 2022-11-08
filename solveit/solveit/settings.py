@@ -63,7 +63,8 @@ ROOT_URLCONF = 'solveit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'publication/templates'),
+                    os.path.join(BASE_DIR,'../front/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,11 +86,11 @@ WSGI_APPLICATION = 'solveit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SolveIT_Database',
+        'NAME': 'SolveIIT_DataBase',
         'USER': 'SolveIT_User',
         'PASSWORD': 'extraClase_6549',
-        'HOST' : 'postgresql-95130-0.cloudclusters.net',
-        'DATABASE_PORT': '10008',
+        'HOST' : 'postgresql-95134-0.cloudclusters.net',
+        'PORT': '10007',
     }
 }
 
@@ -159,15 +160,8 @@ STATIC_URL = '/static/'
 os.makedirs(STATIC_TMP, exist_ok = True)
 os.makedirs(STATIC_ROOT, exist_ok = True)
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),
+                    os.path.join(BASE_DIR, '../front/build/static')]
 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-"""TEMPLATES = [
-    {
-        'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
-    },
-]"""
-
-
