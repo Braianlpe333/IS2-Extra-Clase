@@ -1,6 +1,6 @@
 from django.db import models
 from .choices import *
-import uuid
+
 
 class City(models.Model):
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
