@@ -29,7 +29,8 @@ class CorregimientoView(View):
         
     def post(self,request):
         jd = json.loads(request.body)
-        Corregimiento.objects.create(description=jd['description'],city_id_id=jd['city_id'])
+        Corregimiento.objects.create(description=jd['description'],city=jd['city_id'])
+        city_id_id=jd['city_id']
         dates = {'message':'Success'}
         return JsonResponse(dates)
 
