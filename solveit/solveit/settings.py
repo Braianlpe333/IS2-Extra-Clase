@@ -63,7 +63,7 @@ ROOT_URLCONF = 'solveit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,21 +154,20 @@ REST_FRAMEWORK = {
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_TMP = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static'
+STATIC_URL = '/static/'
 
 os.makedirs(STATIC_TMP, exist_ok = True)
 os.makedirs(STATIC_ROOT, exist_ok = True)
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static')
-)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-TEMPLATES = [
+"""TEMPLATES = [
     {
         'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
     },
-]
+]"""
 
 
