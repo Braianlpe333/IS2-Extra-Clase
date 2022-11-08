@@ -47,9 +47,9 @@ class PublicationView(View):
                 publications.title=jd['title']
                 publications.description=jd['description']
                 publications.phone=jd['phone']
-                publications.publication_type_id_id=jd['publication_type_id']
-                publications.user_id_id=jd['user_id']
-                publications.zone_id_id=jd['zone_id']
+                publications.publication_type_id=jd['publication_type_id']
+                publications.user_id=jd['user_id']
+                publications.zone_id=jd['zone_id']
                 publications.save()
                 dates ={'message':'Success'}
             except ValueError:
