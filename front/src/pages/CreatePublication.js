@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import '../styles/Publication.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CreatePublication = () => {
   const [Sendform, ChallengeSendForm] = useState(false);
@@ -183,8 +184,6 @@ const CreatePublication = () => {
             </div>
 
 
-
-
             <button type="submit">Publicar</button>
 
             {Sendform && (
@@ -198,17 +197,3 @@ const CreatePublication = () => {
 };
 
 export default CreatePublication;
-
-
-
-/*
-{lists.publicationType.map(element=>(
-                  <option key={element.id} value={element.id}>{element.description}</option>
-                
-                  ))
-                }
-{zone.map(element=>(
-  <option key={element.id} value={element.id}>{element.description}</option>
-
-  ))
-}*/
