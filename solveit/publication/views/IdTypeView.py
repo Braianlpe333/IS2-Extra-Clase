@@ -54,3 +54,5 @@ class IdTypeView:
         else:
             dates = {'message':'idType not found...'}
         return JsonResponse(dates)
+    
+    
