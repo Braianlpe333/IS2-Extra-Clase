@@ -86,11 +86,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'SolveIT_Database',
-        'USER': 'postgres',
-        'PASSWORD': '1234567890',
-        'HOST' : '127.0.0.1',
-        'DATABASE_PORT': '5432',
-        
+        'USER': 'SolveIT_User',
+        'PASSWORD': 'extraClase_6549',
+        'HOST' : 'postgresql-95130-0.cloudclusters.net',
+        'DATABASE_PORT': '10008',
     }
 }
 
