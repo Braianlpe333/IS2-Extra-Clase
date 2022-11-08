@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,8 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ek9yehsx$sewa!e158tt*8k)vwkjme19=5+s^!+e77=b12gdjj'
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
+SITE_NAME= 'SolveIT'
+
+
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
@@ -49,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddLeave',
+
 ]
 
 ROOT_URLCONF = 'solveit.urls'
@@ -130,6 +134,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_TMP = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static'
@@ -148,3 +153,5 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
     },
 ]
+=======
+>>>>>>> 5de685c05199850b654ec6648a67e544bd2c1ca9
