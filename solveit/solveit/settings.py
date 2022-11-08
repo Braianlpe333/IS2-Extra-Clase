@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-ek9yehsx$sewa!e158tt*8k)vwkjme19=5+s^!+e77=b12gdjj'
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+
 
 SITE_NAME= 'SolveIT'
 
@@ -46,7 +46,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'corseheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,7 +94,14 @@ DATABASES = {
     }
 }
 
-
+CORSE_ORIGIN_WHITELIST = {
+    'http://localhost:3000',
+    'http://localhost:8000',
+}
+CORSE_TRUSTED_ORIGINS = {
+    'http://localhost:3000',
+    'http://localhost:8000',
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -134,3 +143,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':{
+        'rest_framework.permissions.AllowAny'
+    },
+    'DEFAULT_PAGINATION_CLASS':'rest_framework.pagonation.LimitOffsetPagination',
+    'PAGE_SIZE': 16,
+}
