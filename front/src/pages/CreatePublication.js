@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Container } from "react-bootstrap";
 import axios from "axios";
@@ -6,7 +6,8 @@ import '../styles/Publication.css';
 
 const CreatePublication = () => {
   const [Sendform, ChallengeSendForm] = useState(false);
-
+  const [zones, setZones] = useState([]);
+  const [publicationType, setPuplcationType] = useState([]);
   const initialValues = {
     title: "",
     description: "",
@@ -14,6 +15,18 @@ const CreatePublication = () => {
     typeOfPublication: "",
     zone: "",
   };
+
+  useEffect(()=>{
+    const getSelects = async() =>{
+      const zones = await axios.get('http://127.0.0.1:8000/api/zone')
+      setZones(zones.data.zones);
+      const type = await axios.get("http://127.0.0.1:8000/api/publicationtype")
+      setPuplcationType(type.data.publicationType);
+
+    }
+    getSelects()
+  },[]);
+  
 
 
   const validateform = (values) => {
@@ -32,8 +45,10 @@ const CreatePublication = () => {
     }
     if (!values.phone) {
       errors.phone = "Por favor inserte un numero de telefono";
-    } else if (!/^[1-9]{7,10}$/.test(values.phone)) {
-      errors.phone = "Este campo solo puede contener numeros sin espacios ni giones";
+    } else if (!/^[0-9]*$/.test(values.phone)) {
+      errors.phone = "Este campo solo puede contener numeros sin espacios ni guiones";
+    }else if(!/^\d{9,13}$/.test(values.phone)){
+      errors.phone = "Digite un numero de telefono valido"
     }
     if (!values.typeOfPublication) {
       errors.typeOfPublication = "Por favor seleccione una Categoria";
@@ -50,33 +65,23 @@ const CreatePublication = () => {
     const data = {
       "title": initialValues.title,
       "description": initialValues.description,
-      "user": initialValues.title,
       "phone": initialValues.phone,
-      "publicationType": initialValues.typeOfPublication,
-      "zone": initialValues.zone
+      "publication_type_id": initialValues.typeOfPublication,
+      "user_id":"1",
+      "zone_id": initialValues.zone
     }
     formData.append("files", data);
     await axios
-      .post("http://127.0.0.1:8000/publication/", formData)
+      .post("http://127.0.0.1:8000/api/publication/", data)
       .then((response) => {
-        console.log(response.data);
-        
+        return response
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  const getZones = () =>{
-    axios.get("http://127.0.0.1:8000/api/zone")
-    .then((response)=>{
-      console.log(response);
-      this.setStates({zone: response.data})
-      return response.data
-    }).catch((error)=>{
-      console.log(error);
-    });
-  };
+  
+  
   return (
     <Container>
       <div>
@@ -145,9 +150,11 @@ const CreatePublication = () => {
               <p htmlFor="typeOfPublication"> Categoria</p>
               <Field name="typeOfPublication" as="select">
                 <option value=""></option>
-                <option value="Venta">Venta</option>
-                <option value="Intercambio">Intercambio</option>
-                <option value="Venta o intercambio">Venta o intercambio</option>
+                {publicationType.map(element=>(
+                  <option key={element.id} value={element.id}>{element.description}</option>
+                
+                  ))
+                }
               </Field>
               <ErrorMessage
                 name="typeOfPublication"
@@ -160,10 +167,12 @@ const CreatePublication = () => {
             <div className="zone">
               <p htmlFor="zone"> Zona </p>
               <Field name="zone" as="select">
-                <option value=""></option>
-                <option value="Venta">Venta</option>
-                <option value="Intercambio">Intercambio</option>
-                <option value="Venta o intercambio">Venta o intercambio</option>
+              <option value=""></option>
+              {zones.map(element=>(
+                <option key={element.id} value={element.id}>{element.description}</option>
+
+                ))
+              }
               </Field>
               <ErrorMessage
                 name="zone"
@@ -189,3 +198,17 @@ const CreatePublication = () => {
 };
 
 export default CreatePublication;
+
+
+
+/*
+{lists.publicationType.map(element=>(
+                  <option key={element.id} value={element.id}>{element.description}</option>
+                
+                  ))
+                }
+{zone.map(element=>(
+  <option key={element.id} value={element.id}>{element.description}</option>
+
+  ))
+}*/

@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-class PublicationTypeView:
+class PublicationTypeView(View):
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -21,7 +21,7 @@ class PublicationTypeView:
         else:
             publicationType = list(Publication_Type.objects.values())
             if len(publicationType)>0:
-                dates = {'message':'Success','zones': publicationType}
+                dates = {'message':'Success','publicationType': publicationType}
             else:
                 dates = {'message':'zones not found...'}
             return JsonResponse(dates)

@@ -46,7 +46,7 @@ class Publication(models.Model):
     publication_type_id = models.ForeignKey(Publication_Type, verbose_name = 'Publication_Type_Id', on_delete = models.CASCADE, null = False)
     title = models.CharField(max_length = 50, verbose_name = 'Title', null = False)
     description = models.CharField(max_length = 50, null = False, verbose_name = 'Description')
-    phone = models.PositiveIntegerField(verbose_name = 'Phone', null = False)
+    phone = models.PositiveBigIntegerField(verbose_name = 'Phone', null = False)
     zone_id = models.ForeignKey(Zone, verbose_name = 'Zone', on_delete = models.CASCADE, null = False)
     
 class Score(models.Model):

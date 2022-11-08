@@ -42,23 +42,39 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'publication',
 ]
 
 MIDDLEWARE = [
-    #'corseheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 
 ]
-
+#CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'solveit.urls'
+
+"""CORSE_ALLOWED_ORIGINS=[
+    'http://localhost',
+    'http://localhost:3000',
+    'http://localhost:8000',
+]"""
+CORSE_ORIGIN_WHITELIST = {
+    'http://localhost',
+    'http://localhost:3000',
+    'http://localhost:8000',
+}
+
+
 
 TEMPLATES = [
     {
@@ -94,14 +110,7 @@ DATABASES = {
     }
 }
 
-CORSE_ORIGIN_WHITELIST = {
-    'http://localhost:3000',
-    'http://localhost:8000',
-}
-CORSE_TRUSTED_ORIGINS = {
-    'http://localhost:3000',
-    'http://localhost:8000',
-}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
