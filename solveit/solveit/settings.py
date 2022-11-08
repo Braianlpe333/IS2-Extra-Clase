@@ -143,6 +143,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':{
         'rest_framework.permissions.AllowAny'
@@ -150,3 +151,25 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS':'rest_framework.pagonation.LimitOffsetPagination',
     'PAGE_SIZE': 16,
 }
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_TMP = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static'
+
+os.makedirs(STATIC_TMP, exist_ok = True)
+os.makedirs(STATIC_ROOT, exist_ok = True)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static')
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+TEMPLATES = [
+    {
+        'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
+    },
+]
+
+
