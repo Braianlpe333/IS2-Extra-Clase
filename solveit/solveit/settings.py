@@ -142,3 +142,9 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+TEMPLATES = [
+    {
+        'DIRS': [os.path.join(BASE_DIR, 'publication/templates')],
+    },
+]

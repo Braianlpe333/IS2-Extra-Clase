@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 class Corregimiento(View):
-        @method_decorator(csrf_exempt)
+    @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
