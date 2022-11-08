@@ -5,11 +5,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-<<<<<<< HEAD
-class Corregimiento(View):
-=======
+
 class CorregimientoView(View):
->>>>>>> 5de685c05199850b654ec6648a67e544bd2c1ca9
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)

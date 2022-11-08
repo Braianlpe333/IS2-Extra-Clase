@@ -20,9 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('publication.urls')),
-<<<<<<< HEAD
     path('links/', include('links.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-=======
 ] 
->>>>>>> 5de685c05199850b654ec6648a67e544bd2c1ca9
+
