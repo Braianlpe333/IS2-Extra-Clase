@@ -8,5 +8,5 @@ function Button(){
     )
 }
 
-const domContainer = document.querySelector();
+const domContainer = document.querySelector('#react_container');
 ReactDOM.render(<Button/>,domContainer);
