@@ -17,7 +17,7 @@ class PublicationView(View):
                 dates = {'message':'Success','Publication': publications}
             else:
                 dates = {'message':'Publication not found...'}
-            return JsonResponse(publications)
+            return JsonResponse(dates)
         else:
             publications = list(Publication.objects.values())
             if len(publications)>0:

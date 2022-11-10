@@ -4,6 +4,7 @@ from .views.PublicationView import PublicationView
 from .views.ZoneView import ZoneView
 from django.views import generic
 from .views.PublicationTypeView import PublicationTypeView
+from .views.UserView import UserView
 urlpatterns = [
     path('citys/',CityView.as_view(), name='city_list'),
     path('citys/<int:id>',CityView.as_view(), name='city_process'),
@@ -13,6 +14,8 @@ urlpatterns = [
     path('zone/<int:id>',ZoneView.as_view(), name='Zone_process'),
     path('publicationtype/', PublicationTypeView.as_view(), name='publicationtype_list'),
     path('publicationtype/<int:id>',PublicationTypeView.as_view(), name='publicationtype_process'),
+    path('user/', UserView.as_view(), name='user_list'),
+    path('user/<int:id>',UserView.as_view(), name='user_process'),
     path('view2/',
         generic.TemplateView.as_view(template_name='view2.html')),
     path('',
